@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div class="container-fluid vh-100 d-flex align-items-center justify-content-center bg-page-1" id="pageBg">
-		<div class="video-app-layout d-flex shadow-lg rounded-4">
+	<div class="video-app-layout d-flex shadow-lg rounded-4 bg-layout-1" id="layoutBg">
 			<div class="sidebar d-flex flex-column align-items-center py-4 px-2">
 				<div class="sidebar-title mb-4">VIDEOS</div>
 				<div class="sidebar-thumb selected mb-3" onclick="selectVideo(0)">1</div>
@@ -23,7 +23,7 @@
 					<div class="main-video-label">Main Video</div>
 					<span>1280 x 720 px</span>
 				</div>
-				<div class="main-video-caption text-muted small">Select a video from the left</div>
+				<div class="main-video-caption text-muted small">Select a TITANTRON from the LEFT</div>
 			</div>
 		</div>
 	</div>
@@ -41,6 +41,10 @@
 			const pageBg = document.getElementById('pageBg');
 			pageBg.classList.remove('bg-page-1', 'bg-page-2', 'bg-page-3', 'bg-page-4');
 			pageBg.classList.add('bg-page-' + (idx + 1));
+			// Change layout background
+			const layoutBg = document.getElementById('layoutBg');
+			layoutBg.classList.remove('bg-layout-1', 'bg-layout-2', 'bg-layout-3', 'bg-layout-4');
+			layoutBg.classList.add('bg-layout-' + (idx + 1));
 		}
 		document.addEventListener('DOMContentLoaded', function() {
 			selectVideo(0);
