@@ -16,12 +16,15 @@
 				<div class="sidebar-thumb selected mb-3" onclick="selectVideo(0)">1</div>
 				<div class="sidebar-thumb mb-3" onclick="selectVideo(1)">2</div>
 				<div class="sidebar-thumb mb-3" onclick="selectVideo(2)">3</div>
-				<div class="sidebar-thumb" onclick="selectVideo(3)">4</div>
+				<div class="sidebar-thumb" onclick="selectVideo()">4</div>
 			</div>
 			<div class="main-video-area d-flex flex-column align-items-center justify-content-center p-4">
 				<div class="main-video-box d-flex flex-column align-items-center justify-content-center mb-2" id="mainVideo">
-					<div class="main-video-label">Main Video</div>
-					<span>1280 x 720 px</span>
+					<div class="main-video-label" id="mainVideoLabel">Main Video</div>
+					<video id="mainVideoPlayer" width="720" height="400" controls poster="img/placeholder.png" style="background:#222; border-radius:0.7rem;">
+						<source src="" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
 				</div>
 				<div class="main-video-caption text-muted small">Select a TITANTRON from the LEFT</div>
 			</div>
@@ -29,23 +32,42 @@
 	</div>
 </body>
 	<script>
+		// Simple video and color switching
+		const videoSources = [
+			'videos/video1.mp4',
+			'videos/video2.mp4',
+			'videos/video3.mp4',
+			'videos/video4.mp4'
+		];
+		const videoLabels = [
+			'Main Video',
+			'Video 2',
+			'Video 3',
+			'Video 4'
+		];
+		const pageBgClasses = ['bg-page-1','bg-page-2','bg-page-3','bg-page-4'];
+		const layoutBgClasses = ['bg-layout-1','bg-layout-2','bg-layout-3','bg-layout-4'];
+
 		function selectVideo(idx) {
-			const thumbs = document.querySelectorAll('.sidebar-thumb');
-			thumbs.forEach((t, i) => t.classList.toggle('selected', i === idx));
-			const labels = ["Main Video", "Video 2", "Video 3", "Video 4"];
-			const mainVideo = document.getElementById('mainVideo');
-			mainVideo.innerHTML = `<div class='main-video-label'>${labels[idx]}</div><span>1280 x 720 px</span>`;
-			mainVideo.classList.remove('bg-video-1', 'bg-video-2', 'bg-video-3', 'bg-video-4');
-			mainVideo.classList.add('bg-video-' + (idx + 1));
-			// Change full background
+			// Highlight selected thumb
+			document.querySelectorAll('.sidebar-thumb').forEach((el, i) => {
+				el.classList.toggle('selected', i === idx);
+			});
+			// Change video label
+			document.getElementById('mainVideoLabel').textContent = videoLabels[idx];
+			// Change video source
+			const player = document.getElementById('mainVideoPlayer');
+			player.src = videoSources[idx];
+			player.load();
+			// Change backgrounds
 			const pageBg = document.getElementById('pageBg');
-			pageBg.classList.remove('bg-page-1', 'bg-page-2', 'bg-page-3', 'bg-page-4');
-			pageBg.classList.add('bg-page-' + (idx + 1));
-			// Change layout background
+			pageBg.classList.remove(...pageBgClasses);
+			pageBg.classList.add(pageBgClasses[idx]);
 			const layoutBg = document.getElementById('layoutBg');
-			layoutBg.classList.remove('bg-layout-1', 'bg-layout-2', 'bg-layout-3', 'bg-layout-4');
-			layoutBg.classList.add('bg-layout-' + (idx + 1));
+			layoutBg.classList.remove(...layoutBgClasses);
+			layoutBg.classList.add(layoutBgClasses[idx]);
 		}
+		// Set default on load
 		document.addEventListener('DOMContentLoaded', function() {
 			selectVideo(0);
 		});
