@@ -16,13 +16,12 @@
 				<div class="sidebar-thumb selected mb-3" onclick="selectVideo(0)">1</div>
 				<div class="sidebar-thumb mb-3" onclick="selectVideo(1)">2</div>
 				<div class="sidebar-thumb mb-3" onclick="selectVideo(2)">3</div>
-				<div class="sidebar-thumb" onclick="selectVideo()">4</div>
+				<div class="sidebar-thumb" onclick="selectVideo(3)">4</div>
 			</div>
 			<div class="main-video-area d-flex flex-column align-items-center justify-content-center p-4">
 				<div class="main-video-box d-flex flex-column align-items-center justify-content-center mb-2" id="mainVideo">
 					<div class="main-video-label" id="mainVideoLabel">Main Video</div>
-					<video id="mainVideoPlayer" width="720" height="400" controls poster="img/placeholder.png" style="background:#222; border-radius:0.7rem;">
-						<source src="" type="video/mp4">
+					<video id="mainVideoPlayer" width="720" height="400" style="background:#222; border-radius:0.7rem;" controls>
 						Your browser does not support the video tag.
 					</video>
 				</div>
@@ -32,27 +31,23 @@
 	</div>
 </body>
 	<script>
-		// Simple video and color switching
-		const videoSources = [
-			'videos/video1.mp4',
-			'videos/video2.mp4',
-			'videos/video3.mp4',
-			'videos/video4.mp4'
-		];
+		// Put your video file links here, in the same order as the sidebar thumbs
 		const videoLabels = [
-			'Main Video',
-			'Video 2',
-			'Video 3',
+			'Electrifying (The Rock)',
+			'YOU DONT TELL ME WHAT TO DO (Stone Cold)',
+		    'LINE IN THE SAND (EVOLUTION)',
 			'Video 4'
 		];
 		// Put your video file links in the array below, in the same order as the sidebar thumbs.
 		// Example: 'videos/myvideo.mp4' or just 'myvideo.mp4' if in the same folder as this HTML file.
+
 		const videoSources = [
 			'ELECTRIFYING.mp4',
-			'videos/video2.mp4',
-			'videos/video3.mp4',
+			'STONE COLDD.mp4',
+			'videoplayback (2).mp4',
 			'NWO VIDEO.mp4'
-		];	const pageBgClasses = ['bg-page-1','bg-page-2','bg-page-3','bg-page-4'];
+		];
+		const pageBgClasses = ['bg-page-1','bg-page-2','bg-page-3','bg-page-4'];
 		const layoutBgClasses = ['bg-layout-1','bg-layout-2','bg-layout-3','bg-layout-4'];
 
 		function selectVideo(idx) {
@@ -62,7 +57,7 @@
 			});
 			// Change video label
 			document.getElementById('mainVideoLabel').textContent = videoLabels[idx];
-			// Change video source
+			// Change video source directly on <video>
 			const player = document.getElementById('mainVideoPlayer');
 			player.src = videoSources[idx];
 			player.load();
@@ -76,7 +71,7 @@
 		}
 		// Set default on load
 		document.addEventListener('DOMContentLoaded', function() {
-			selectVideo(0);
+		selectVideo(0);
 		});
 	</script>
 </html>

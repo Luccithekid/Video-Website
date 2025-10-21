@@ -1,26 +1,26 @@
 .bg-layout-1 {
-	background: #fff !important;
+	background: #0011ff !important;
 }
 .bg-layout-2 {
-	background: #ffe0e3 !important;
+	background: #ac5300 !important;
 }
 .bg-layout-3 {
-	background: #e0ffe3 !important;
+	background: #ff9100 !important;
 }
 .bg-layout-4 {
-	background: #e0f0ff !important;
+	background: #a4a3b1 !important;
 }
 .bg-page-1 {
-	background: #f7fafd !important;
+	background: #0073e6 !important;
 }
 .bg-page-2 {
-	background: #fff0f3 !important;
+	background: #000000 !important;
 }
 .bg-page-3 {
-	background: #f0fff7 !important;
+	background: #ff6600 !important;
 }
 .bg-page-4 {
-	background: #f0f4ff !important;
+	background: #252525 !important;
 }
 .bg-video-1 {
 	background: linear-gradient(120deg, #e8eaf6 60%, #cfd8dc 100%);
@@ -50,7 +50,7 @@ body {
 	box-shadow: 0 8px 32px rgba(0,0,0,0.10);
 }
 .sidebar {
-	background: #f0f4fa;
+	background: #768192;
 	border-radius: 1.5rem 0 0 1.5rem;
 	min-width: 70px;
 	width: 70px;
